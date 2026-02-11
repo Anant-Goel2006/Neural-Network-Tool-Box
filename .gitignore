@@ -1,0 +1,15 @@
+__pycache__/
+.pytest_cache/
+.vscode/
+.env
+*.pyc
+*.pyo
+*.pyd
+env/
+.venv/
+dist/
+build/
+
+# Ignore large data and model artifacts (keep placeholders)
+data/*.csv
+models/*.pkl
