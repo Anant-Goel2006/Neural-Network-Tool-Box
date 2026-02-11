@@ -1,12 +1,12 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 
 # ======================================================
 # Activation Functions
 # ======================================================
 def sigmoid(x):
+    x = np.clip(x, -500, 500)
     return 1 / (1 + np.exp(-x))
 
 def sigmoid_derivative(a):
@@ -120,7 +120,9 @@ if menu == "Forward Propagation":
         z1, a1, z2, a2, z3, y_hat = forward(x1, x2)
 
         st.subheader(f"Sample {i+1}")
-        st.write(f"Prediction: {y_hat:.4f}")
+        st.write(f"z1 = {z1:.4f}, a1 = {a1:.4f}")
+        st.write(f"z2 = {z2:.4f}, a2 = {a2:.4f}")
+        st.metric("Prediction (ŷ)", f"{y_hat:.4f}")
 
 # ======================================================
 # BACKPROPAGATION
@@ -185,12 +187,7 @@ elif menu == "Gradient Descent Training":
 
         loss_history.append(total_loss / len(X))
 
-    st.subheader("Loss Curve")
-    fig, ax = plt.subplots()
-    ax.plot(loss_history)
-    ax.set_xlabel("Epoch")
-    ax.set_ylabel("Loss")
-    ax.grid()
-    st.pyplot(fig)
+    st.subheader("📉 Loss Curve")
+    st.line_chart(loss_history)
 
     st.success("Training Complete")
