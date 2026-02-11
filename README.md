@@ -29,7 +29,7 @@ python scripts/download_data.py
 streamlit run app.py
 ```
 
-What I added
+Files
 
 - `requirements.txt` — Python dependencies
 - `scripts/download_data.py` — download the CSV into `data/`
@@ -37,7 +37,4 @@ What I added
 - `data/.gitkeep` and `models/.gitkeep` — placeholders so folders appear in git
 - `.gitignore` — common ignores including model and data artifacts
 
-Next suggestions
 
-- Automatically save the trained model from `app.py` using `model_utils.save_model()`
-- Add unit tests and a small example notebook
